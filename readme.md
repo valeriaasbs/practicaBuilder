@@ -109,7 +109,11 @@ Ejecuta el método main para verificar que:
 
 #### Preguntas de Análisis:
 - ¿Cómo mejora la legibilidad del código cliente el uso del patrón Builder?
-- ¿Qué ventaja tiene hacer la clase `Builder` estática e interna?
-- ¿Garantiza este patrón la inmutabilidad del objeto `User`? ¿Por qué?
+Permite identificar explícitamente qué valor corresponde a cada atributo mediante métodos con nombre propio, eliminando la confusión de pasar múltiples argumentos seguidos del mismo tipo en un constructor largo y evitando valores null innecesarios.
 
+- ¿Qué ventaja tiene hacer la clase `Builder` estática e interna?
+Al ser interna, puede acceder directamente al constructor private de User; al ser static, puede instanciarse directamente sin necesidad de que exista previamente una instancia de User.
+
+- ¿Garantiza este patrón la inmutabilidad del objeto `User`? ¿Por qué?
+í, siempre y cuando User declare todos sus atributos como private final y no exponga métodos setter. Todo el estado mutable ocurre únicamente dentro del Builder antes de llamar a .build(); una vez que .build() invoca al constructor privado de User, el objeto queda completamente construido y sus valores no pueden alterarse.
 ---
